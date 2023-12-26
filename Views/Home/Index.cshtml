@@ -1,0 +1,299 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Order Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 120vh;
+        }
+
+        .navbar {
+            background-color: #fff; /* White background color for the navbar */
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .basicinfo {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-around;
+            align-items: normal;
+            padding: 10px;
+        }
+
+        .col-1 {
+            text-align: center;
+        }
+
+        .save-button {
+            background-color: #3498db; /* Blue background color for Save button */
+        }
+
+        .discard-button, .save-button {
+            background-color: #808080; /* Gray background color for Discard button */
+            color: #fff; /* White text color */
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .action-buttons {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .container {
+            display: flex;
+            align-items: normal;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            height: 100%;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+
+        .column {
+            flex: 1;
+            padding: 0 10px;
+        }
+
+        h3 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* button {
+                            padding: 10px;
+                            background-color: #2196F3;
+                            color: #fff;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            width: 100%;
+                        } */
+    </style>
+</head>
+<body>
+   @*  <div class="navbar">
+        <div class="row">
+            <div class="col-1">
+                <i class="fa fa-envelope" style="font-size:16px"></i>
+                RFQ
+            </div>
+
+            <div class="col-1">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                RFQ sent
+            </div>
+
+            <div class="col-1">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                To Approve
+            </div>
+
+            <div class="col-1">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Purchase Order
+            </div>
+        </div>
+    </div> *@
+
+    <div class="action-buttons">
+        <button class="discard-button">Discard</button>
+        <button class="save-button" style="background-color:blue" id="saveButton">Save</button>
+    </div>
+
+
+    <div class="container" style="height:fit-content" >
+
+        <div class="column">
+          @*   <div class="row">
+                <h3 style="margin-left:300px;"><b>Create RFQ</b></h3>
+
+            </div>
+            <br />
+            <br /> *@
+            <br />
+            @* <h3>Basic Information</h3> *@
+            <label for="vendor">Vendor</label>
+            <select id="vendor" name="vendor">
+                <option value="Vendor 1">Vendor 1</option>
+                <option value="Vendor 2">Vendor 2</option>
+                <option value="Vendor 3">Vendor 3</option>
+            </select>
+
+            <label for="vatRegistrationNumber">VAT Registration Number</label>
+            <input type="text" id="vatRegistrationNumber" name="vatRegistrationNumber">
+
+            <label for="createdDate">Created Date</label>
+            <input type="date" id="createdDate" name="createdDate">
+
+            <label for="expectedArrivalDate">Expected Arrival Date</label>
+            <input type="date" id="expectedArrivalDate" name="expectedArrivalDate">
+
+            <label for="buyer">Buyer</label>
+            <select id="buyer" name="buyer">
+                <option value="buyer1">Buyer 1</option>
+                <option value="buyer2">Buyer 2</option>
+                <option value="buyer3">Buyer 3</option>
+            </select>
+
+            <label for="paymentTerms">Payment Terms</label>
+            <select id="paymentTerms" name="paymentTerms">
+                <option value="cashOnDelivery">Cash on Delivery</option>
+                <option value="creditCard">Credit Card Payment</option>
+            </select>
+
+            <label for="referenceDocument">Reference Document</label>
+            <input type="text" id="referenceDocument" name="referenceDocument">
+
+            <label for="shoppingPoint">Shopping Point</label>
+            <select id="shoppingPoint" name="shoppingPoint">
+                <option value="point1">Shopping Point 1</option>
+                <option value="point2">Shopping Point 2</option>
+                <option value="point3">Shopping Point 3</option>
+            </select>
+        </div>
+
+        <div class="column">
+           @*  <h3>Product Information</h3> *@
+           <br />
+            <label for="material">Material</label>
+            <input type="text" id="material" name="material">
+
+            <label for="arrivalDate">Arrival Date</label>
+            <input type="date" id="arrivalDate" name="arrivalDate">
+
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" name="quantity">
+
+            <label for="unitOfMeasure">Unit of Measure</label>
+            <input type="text" id="unitOfMeasure" name="unitOfMeasure">
+
+            <label for="unitPrice">Unit Price</label>
+            <input type="text" id="unitPrice" name="unitPrice">
+
+            <label for="vatPercentage">VAT Percentage</label>
+            <input type="text" id="vatPercentage" name="vatPercentage">
+
+            <label for="amountExcludingVAT">Amount Excl VAT</label>
+            <input type="text" id="amountExcludingVAT" name="amountExcludingVAT">
+
+            <label for="vatAmount">VAT Amount</label>
+            <input type="text" id="vatAmount" name="vatAmount">
+
+            <label for="totalAmountIncludingVAT">Total Amount Incl VAT</label>
+            <input type="text" id="totalAmountIncludingVAT" name="totalAmountIncludingVAT">
+        </div>
+
+
+
+    </div>
+
+
+    @section Scripts
+        {
+        <script>
+            //edit: threw console.log around, nothing shows up in the browser console
+
+            $(document).ready(function () {
+                $("#saveButton").click(function () {
+                    // Collect data from the form
+                    var SaveRequest = {
+                        vendor: $("#vendor").val(),
+                        vatRegistrationNumber: $("#vatRegistrationNumber").val(),
+                         createdDate: $("#createdDate").val(),
+                         expectedArrivalDate: $("#expectedArrivalDate").val(),
+                        buyer: $("#buyer").val(),
+                        paymentTerms: $("#paymentTerms").val(),
+                        referenceDocument: $("#referenceDocument").val(),
+                        shoppingPoint: $("#shoppingPoint").val(),
+                        material: $("#material").val(),
+                        arrivalDate: $("#arrivalDate").val(),
+                        quantity: $("#quantity").val(),
+                        unitOfMeasure: $("#unitOfMeasure").val(),
+                        unitPrice: $("#unitPrice").val(),
+                        vatPercentage: $("#vatPercentage").val(),
+                        amountExcludingVAT: $("#amountExcludingVAT").val(),
+                        vatAmount: $("#vatAmount").val(),
+                       totalAmountIncludingVAT: $("#totalAmountIncludingVAT").val()
+                    };
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/Home/SaveAllData",
+                        contentType: "application/json",
+                        dataType: 'json',
+                        data: JSON.stringify({ SaveRequest }),
+                        success: function (response) {
+                            // Handle success
+                            alert(response);
+                            console.log(response);
+                        },
+                        error: function (error) {
+                            // Handle error
+                            console.error("Error:", error);
+                        }
+                    });
+                });
+            });
+
+        </script>
+    }
+</body>
+</html>
